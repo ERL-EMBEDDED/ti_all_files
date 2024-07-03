@@ -1,0 +1,420 @@
+Message Name: VDC_A9
+  ID (hex): 0x28a
+  Length: 8
+  Signals:
+    Name: WheelSpeedFR
+
+    Start Bit: 7
+    Length: 16
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.041667
+    Offset: 0
+    Minimum: 0
+    Maximum: 2730.583333
+    Unit: rpm
+    Choices: None
+
+    Name: WheelSpeedFL
+    Start Bit: 23
+    Length: 16
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.041667
+    Offset: 0
+    Minimum: 0
+    Maximum: 2730.583333
+    Unit: rpm
+    Choices: None
+
+    Name: VehicleSpeed
+    Start Bit: 39
+    Length: 16
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.01
+    Offset: 0
+    Minimum: 0
+    Maximum: 655.34
+    Unit: km/h
+    Choices: None
+
+    Name: VehicleSpeedClock
+    Start Bit: 51
+    Length: 4
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 15
+    Unit: None
+    Choices: None
+
+    Name: VehicleSpeedCRC
+    Start Bit: 63
+    Length: 8
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 255
+    Unit: None
+    Choices: None
+
+Message Name: VDC_A6
+  ID (hex): 0xab
+  Length: 8
+  Signals:
+    Name: CRC_VDC_A6
+    Start Bit: 7
+    Length: 8
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 255
+    Unit: None
+    Choices: None
+
+    Name: Clock_VDC_A6
+    Start Bit: 15
+    Length: 4
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 15
+    Unit: None
+    Choices: None
+
+    Name: YawRateCorrected
+    Start Bit: 10
+    Length: 11
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.1
+    Offset: -100
+    Minimum: -100
+    Maximum: 100
+    Unit: Â°/s
+    Choices: None
+
+    Name: SteerRackPinionAngleCorrect
+    Start Bit: 39
+    Length: 15
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.1
+    Offset: -1080
+    Minimum: -1080
+    Maximum: 1080
+    Unit: Â°
+    Choices: None
+
+Message Name: VDC_A3
+  ID (hex): 0x289
+  Length: 8
+  Signals:
+    Name: CRC_VDC_A3
+    Start Bit: 7
+    Length: 8
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 255
+    Unit: None
+    Choices: None
+
+    Name: Clock_VDC_A3
+    Start Bit: 15
+    Length: 4
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 15
+    Unit: None
+    Choices: None
+
+    Name: WheelSpeedRL
+    Start Bit: 23
+    Length: 16
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.041667
+    Offset: 0
+    Minimum: 0
+    Maximum: 2730.583333
+    Unit: rpm
+    Choices: None
+
+    Name: WheelSpeedRR
+    Start Bit: 39
+    Length: 16
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.041667
+    Offset: 0
+    Minimum: 0
+    Maximum: 2730.583333
+    Unit: rpm
+    Choices: None
+
+Message Name: STRG_A1
+  ID (hex): 0xa8
+  Length: 7
+  Signals:
+    Name: CRC_STRG_A1
+    Start Bit: 7
+    Length: 8
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 255
+    Unit: None
+    Choices: None
+
+    Name: Clock_STRG_A1
+    Start Bit: 15
+    Length: 4
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 15
+    Unit: None
+    Choices: None
+
+    Name: SteeringWheelAngleRaw
+    Start Bit: 22
+    Length: 15
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.1
+    Offset: -1080
+    Minimum: -1080
+    Maximum: 1080
+    Unit: Â°
+    Choices: None
+
+    Name: SwaSensorInternalStatus
+    Start Bit: 39
+    Length: 3
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(0, 'not calibrated, not indexed'), (1, 'not calibrated, indexed'), (2, 'fault'), (3, 'reserved'), (4, 'calibrated, not initialised'), (5, 'calibrated, initialised'), (6, 'reserved'), (7, 'reserved')])
+
+    Name: SteeringWheelRotationSpeed
+    Start Bit: 47
+    Length: 16
+    Byte Order: big_endian
+    Signed: False
+    Scale: 0.1
+    Offset: -3276.7
+    Minimum: -3276.7
+    Maximum: 3276.7
+    Unit: Â°/s
+    Choices: None
+
+Message Name: EPS_A101
+  ID (hex): 0x216
+  Length: 4
+  Signals:
+    Name: CRC_EPS_A101
+    Start Bit: 7
+    Length: 8
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 255
+    Unit: None
+    Choices: None
+
+    Name: Clock_EPS_A101
+    Start Bit: 15
+    Length: 4
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 15
+    Unit: None
+    Choices: None
+
+    Name: APA_AngleRequestValidity
+    Start Bit: 11
+    Length: 1
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'Valid'), (0, 'Not Valid')])
+
+    Name: LCA_SteeringOverride
+    Start Bit: 10
+    Length: 1
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'Override detected'), (0, 'No override')])
+
+    Name: EPS_ControlledByLCA
+    Start Bit: 23
+    Length: 1
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'Controlled'), (0, 'Not Controlled')])
+
+    Name: EPS_ControlledByLKA
+    Start Bit: 22
+    Length: 1
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'Controlled'), (0, 'Not Controlled')])
+
+    Name: EPS_SpeedValid
+    Start Bit: 21
+    Length: 1
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'ESP Speed Valid'), (0, 'ESP Speed NOT Valid')])
+
+    Name: EPS_TorqueOnFlag
+    Start Bit: 20
+    Length: 1
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'StopAuto authorized'), (0, 'StopAuto forbidden')])
+
+    Name: EPSWarning
+    Start Bit: 19
+    Length: 2
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(3, 'EPS meter lamp check'), (2, 'EPS failure level 2'), (1, 'EPS failure level 1'), (0, 'No EPS warning')])
+
+    Name: EPS_BatterySupplyCurrent
+    Start Bit: 31
+    Length: 8
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: 0
+    Maximum: 254
+    Unit: A
+    Choices: None
+
+Message Name: ECM_A112
+  ID (hex): 0x75
+  Length: 8
+  Signals:
+    Name: PowerTrainStatus
+    Start Bit: 25
+    Length: 2
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(0, 'Powertrain Stopped'), (1, 'Reserved'), (2, 'Powertrain Running'), (3, 'Powertrain Starting')])
+
+Message Name: CDM_A103
+  ID (hex): 0x5ee
+  Length: 8
+  Signals:
+    Name: MultiDriveMode_EPS_v2
+    Start Bit: 7
+    Length: 4
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(0, 'Mode EPS 1'), (1, 'Mode EPS 2'), (2, 'Mode EPS 3'), (3, 'Mode EPS 4'), (4, 'Mode EPS 5'), (5, 'Mode EPS 6'), (6, 'Mode EPS 7'), (7, 'Mode EPS 8'), (8, 'Mode EPS 9'), (9, 'Mode EPS 10'), (10, 'Mode EPS 11'), (11, 'Mode EPS 12'), (12, 'Mode EPS 13'), (13, 'Mode EPS 14 '), (14, 'Mode EPS 15'), (15, 'Unavailable')])
+
+Message Name: ADAS_A116
+  ID (hex): 0x474
+  Length: 8
+  Signals:
+    Name: LDW_HapticalActionRequest
+    Start Bit: 59
+    Length: 1
+    Byte Order: little_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'Haptical Action Requested'), (0, 'Haptical Action NOT Requested')])
+
+Message Name: ADAS_A103
+  ID (hex): 0x57a
+  Length: 8
+  Signals:
+    Name: LDW_RoadQualityEstimation
+    Start Bit: 28
+    Length: 1
+    Byte Order: big_endian
+    Signed: False
+    Scale: 1
+    Offset: 0
+    Minimum: None
+    Maximum: None
+    Unit: None
+    Choices: OrderedDict([(1, 'Degraded detection'), (0, 'Normal detection')])

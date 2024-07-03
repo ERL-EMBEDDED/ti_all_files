@@ -1,0 +1,3 @@
+g++ -c main.cpp -o main.o
+g++ -c error_handling.cpp -o error_handling.o
+g++ main.o error_handling.o -o program

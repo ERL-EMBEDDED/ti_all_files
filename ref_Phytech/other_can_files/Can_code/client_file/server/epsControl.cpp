@@ -1,0 +1,160 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include "epsControl.h"
+
+
+
+epsControl::epsControl()
+{
+}
+
+epsControl::~epsControl()
+{
+
+}
+
+void epsControl::initSocketConnection()
+{
+    etherNERIServer_socket = socket(AF_INET, SOCK_STREAM, 0);
+    
+
+    // Specify the IP address and port
+
+    //Send data path Expected speed reception
+
+    etherNERIServer_address.sin_family = AF_INET;
+    etherNERIServer_address.sin_addr.s_addr = inet_addr(host);
+    etherNERIServer_address.sin_port = htons(etherNERIPort);
+
+    // Bind to the IP address and port
+    if (bind(etherNERIServer_socket, (struct sockaddr *)&etherNERIServer_address, sizeof(etherNERIServer_address)) == -1) {
+        perror("Bind failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Listen for incoming connections
+    if (listen(etherNERIServer_socket, 5) == -1) {
+        perror("Listen failed");
+        exit(EXIT_FAILURE);
+    }
+    printf("etherNERI Path Server Ready\n");
+
+    while (true)
+    {
+        socklen_t etherNERIClient_address_len = sizeof(etherNERIClient_address);
+        if ((etherNERIClient_socket = accept(etherNERIServer_socket, (struct sockaddr *)&etherNERIClient_address, &etherNERIClient_address_len)) == -1) {
+            perror("Accept failed");
+	    usleep(10000);
+            continue;
+        }
+        printf("etherNERI Send Path : Got connection from %s\n", inet_ntoa(etherNERIClient_address.sin_addr));
+	break;
+    }
+
+
+}
+
+void epsControl::closeSocketConnection()
+{
+	close(etherNERIClient_socket);
+	close(etherNERIServer_socket);
+}
+
+void epsControl::messageEncoding()
+{
+	memset(sendCANFrame, 0, 5);
+	sendCANFrame[0] = CANMsgId;
+        vehicleSpeed = expectedVehicleSpeed;
+
+        intDataptr = &vehicleSpeed;
+        charDataptr = (unsigned char*)intDataptr;
+        for(int i=0;i<4;i++)
+	{
+		sendCANFrame[i+1] = *(charDataptr+i);
+                printf("charDataptr[%d]:[%x] \n",i, *(charDataptr+i));
+	}
+        for(int i=0; i < 5 ; i++)
+	{
+ 		printf("sendCAN[%d] : [%x]\n",i,sendCANFrame[i]);
+	}	
+
+}
+
+void epsControl::sendVehicleSpeed()
+{
+       send(etherNERIClient_socket, sendCANFrame, CAN_FRAME_SIZE, 0);
+
+
+/*#if 0
+        // Receive data from the client
+        char buffer[1024];
+        ssize_t bytes_received = recv(sendClient_socket, buffer, sizeof(buffer), 0);
+        if (bytes_received == -1) {
+            perror("Error receiving data");
+            close(sendClient_socket);
+            continue;
+        }
+
+        buffer[bytes_received] = '\0';
+        printf("Received message: %s\n", buffer);
+#endif */
+
+}
+
+
+void epsControl::messageDecoding()
+{
+    actualVehicleSpeed = 0x0;
+    vehicleSpeed = 0x00;
+    for(int i=0 ; i < CAN_DATA_SIZE; i++)
+    {
+	    receiveCANData[i] = receiveCANFrame[i+1];
+	    printf("[%c]", receiveCANFrame[i]);
+    }
+    printf("\n");
+    
+    vehicleSpeed = vehicleSpeed | ((0xFFFF00 | (receiveCANData[3])) << 24);
+    vehicleSpeed = vehicleSpeed | ((0xFFFF00 | (receiveCANData[2])) << 16);
+    vehicleSpeed = vehicleSpeed | ((0xFF0000 | (receiveCANData[1])) << 8);
+    vehicleSpeed = vehicleSpeed | ((0x000000 | (receiveCANData[0])));
+
+    actualVehicleSpeed = vehicleSpeed;
+    printf("actualVehiclespeed [%d]\n", actualVehicleSpeed);
+		    
+//    memcpy((*(receiveCANData)), (*(receiveCANFrame+1)),CAN_DATA_SIZE);
+}
+
+
+void epsControl::receiveVehicleSpeed() {
+    // Receive TCP/IP frame from client
+    recv(etherNERIClient_socket, receiveCANFrame, CAN_FRAME_SIZE, 0);
+    
+    // Decode received frame and extract vehicle speed
+    memcpy(&actualVehicleSpeed, &receiveCANFrame[1], sizeof(actualVehicleSpeed));
+    std::cout << "Received Vehicle Speed: " << actualVehicleSpeed << std::endl;
+}
+
+
+
+int main()
+{
+	epsControl eps;
+	eps.initSocketConnection();
+	while (true)
+	{
+		//printf("Enter ExpectedSpeed\n");
+		//scanf("%d", &expectedVehicleSpeed);
+		expectedVehicleSpeed =100;
+		eps.messageEncoding();
+		eps.sendVehicleSpeed();
+		eps.receiveVehicleSpeed();
+		eps.messageDecoding();
+		usleep(10000);  //10msec sleep
+        }
+	eps.closeSocketConnection();
+	return 0;
+}

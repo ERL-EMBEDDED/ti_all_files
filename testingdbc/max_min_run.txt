@@ -1,0 +1,11 @@
+size_t bracketStartPos = signalDetails.find('[');
+            size_t bracketEndPos = signalDetails.find(']');
+            if (bracketStartPos != std::string::npos && bracketEndPos != std::string::npos) {
+                std::string minMaxStr = signalDetails.substr(bracketStartPos + 1, bracketEndPos - bracketStartPos - 1);
+                size_t pipePos = minMaxStr.find('|');
+                if (pipePos != std::string::npos) {
+                    std::string minStr = minMaxStr.substr(0, pipePos);
+                    std::string maxStr = minMaxStr.substr(pipePos + 1);
+                    signal.minimum = std::stod(minStr);
+                    signal.maximum = std::stod(maxStr);
+                }

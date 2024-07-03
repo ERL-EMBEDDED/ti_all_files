@@ -1,0 +1,147 @@
+VERSION "HNNBNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN/4/%%%/4/'%**4NNN///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+
+BS_:
+
+BU_: VDC USM STRG METER HFM HEVC GWBridge EPS ECUxx ECM CDM BCM ATCU ADAS ACU
+
+
+BO_ 650 VDC_A9: 8 VDC
+ SG_ WheelSpeedFR : 7|16@0+ (0.041667,0) [0|2730.583333] "rpm"  EPS
+ SG_ WheelSpeedFL : 23|16@0+ (0.041667,0) [0|2730.583333] "rpm"  EPS
+ SG_ VehicleSpeedCRC : 63|8@0+ (1,0) [0|255] ""  EPS
+ SG_ VehicleSpeedClock : 51|4@0+ (1,0) [0|15] ""  EPS
+ SG_ VehicleSpeed : 39|16@0+ (0.01,0) [0|655.34] "km/h"  EPS
+
+BO_ 171 VDC_A6: 8 VDC
+ SG_ YawRateCorrected : 10|11@0+ (0.1,-100) [-100|100] "°/s"  EPS
+ SG_ SteerRackPinionAngleCorrect : 39|15@0+ (0.1,-1080) [-1080|1080] "°"  EPS
+ SG_ CRC_VDC_A6 : 7|8@0+ (1,0) [0|255] ""  EPS
+ SG_ Clock_VDC_A6 : 15|4@0+ (1,0) [0|15] ""  EPS
+
+BO_ 649 VDC_A3: 8 VDC
+ SG_ WheelSpeedRR : 39|16@0+ (0.041667,0) [0|2730.583333] "rpm"  EPS
+ SG_ WheelSpeedRL : 23|16@0+ (0.041667,0) [0|2730.583333] "rpm"  EPS
+ SG_ CRC_VDC_A3 : 7|8@0+ (1,0) [0|255] ""  EPS
+ SG_ Clock_VDC_A3 : 15|4@0+ (1,0) [0|15] ""  EPS
+
+BO_ 168 STRG_A1: 7 STRG
+ SG_ SwaSensorInternalStatus : 39|3@0+ (1,0) [0|0] ""  EPS
+ SG_ SteeringWheelRotationSpeed : 47|16@0+ (0.1,-3276.7) [-3276.7|3276.7] "°/s"  EPS
+ SG_ SteeringWheelAngleRaw : 22|15@0+ (0.1,-1080) [-1080|1080] "°"  EPS
+ SG_ CRC_STRG_A1 : 7|8@0+ (1,0) [0|255] ""  EPS
+ SG_ Clock_STRG_A1 : 15|4@0+ (1,0) [0|15] ""  EPS
+
+BO_ 534 EPS_A101: 4 EPS
+ SG_ LCA_SteeringOverride : 10|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPSWarning : 19|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPS_TorqueOnFlag : 20|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPS_SpeedValid : 21|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPS_ControlledByLKA : 22|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPS_ControlledByLCA : 23|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPS_BatterySupplyCurrent : 31|8@0+ (1,0) [0|254] "A" Vector__XXX
+ SG_ CRC_EPS_A101 : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Clock_EPS_A101 : 15|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ APA_AngleRequestValidity : 11|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 117 ECM_A112: 8 ECM
+ SG_ PowerTrainStatus : 25|2@0+ (1,0) [0|0] ""  EPS
+
+BO_ 1518 CDM_A103: 8 CDM
+ SG_ MultiDriveMode_EPS_v2 : 7|4@0+ (1,0) [0|0] ""  EPS
+
+BO_ 1140 ADAS_A116: 8 ADAS
+ SG_ LDW_HapticalActionRequest : 59|1@1+ (1,0) [0|0] ""  EPS
+
+BO_ 1402 ADAS_A103: 8 ADAS
+ SG_ LDW_RoadQualityEstimation : 28|1@0+ (1,0) [0|0] ""  EPS
+
+
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BO_  "CycleTime" INT 0 10000;
+BA_DEF_ BO_  "FrameType" STRING ;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","not_used","not_used","not_used","not_used","Cyclic","not_used","IfActive","NoMsgSendType";
+BA_DEF_ BU_  "NmStationAddress" HEX 0 0;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "CycleTime" 100;
+BA_DEF_DEF_  "FrameType" "-";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 650 20;
+BA_ "GenMsgSendType" BO_ 650 8;
+BA_ "CycleTime" BO_ 650 20;
+BA_ "FrameType" BO_ 650 "Periodic";
+BA_ "GenMsgCycleTime" BO_ 171 10;
+BA_ "GenMsgSendType" BO_ 171 8;
+BA_ "CycleTime" BO_ 171 10;
+BA_ "FrameType" BO_ 171 "Periodic";
+BA_ "GenMsgCycleTime" BO_ 649 20;
+BA_ "GenMsgSendType" BO_ 649 8;
+BA_ "CycleTime" BO_ 649 20;
+BA_ "FrameType" BO_ 649 "Periodic";
+BA_ "GenMsgCycleTime" BO_ 168 10;
+BA_ "GenMsgSendType" BO_ 168 8;
+BA_ "CycleTime" BO_ 168 10;
+BA_ "FrameType" BO_ 168 "Periodic";
+BA_ "FrameType" BO_ 534 "Periodic";
+BA_ "CycleTime" BO_ 534 20;
+BA_ "GenMsgCycleTime" BO_ 534 20;
+BA_ "GenMsgSendType" BO_ 534 8;
+BA_ "GenMsgCycleTime" BO_ 117 10;
+BA_ "GenMsgSendType" BO_ 117 0;
+BA_ "CycleTime" BO_ 117 10;
+BA_ "FrameType" BO_ 117 "Periodic";
+BA_ "GenMsgCycleTime" BO_ 1518 1000;
+BA_ "GenMsgSendType" BO_ 1518 0;
+BA_ "CycleTime" BO_ 1518 1000;
+BA_ "FrameType" BO_ 1518 "Periodic and Event";
+BA_ "GenMsgCycleTime" BO_ 1140 20;
+BA_ "FrameType" BO_ 1140 "Periodic and Event";
+BA_ "CycleTime" BO_ 1140 20;
+BA_ "GenMsgSendType" BO_ 1140 8;
+BA_ "GenMsgCycleTime" BO_ 1402 20;
+BA_ "FrameType" BO_ 1402 "Periodic and Event";
+BA_ "CycleTime" BO_ 1402 20;
+BA_ "GenMsgSendType" BO_ 1402 0;
+VAL_ 168 SwaSensorInternalStatus 0 "not calibrated, not indexed" 1 "not calibrated, indexed" 2 "fault" 3 "reserved" 4 "calibrated, not initialised" 5 "calibrated, initialised" 6 "reserved" 7 "reserved" ;
+VAL_ 534 LCA_SteeringOverride 1 "Override detected" 0 "No override" ;
+VAL_ 534 EPSWarning 3 "EPS meter lamp check" 2 "EPS failure level 2" 1 "EPS failure level 1" 0 "No EPS warning" ;
+VAL_ 534 EPS_TorqueOnFlag 1 "StopAuto authorized" 0 "StopAuto forbidden" ;
+VAL_ 534 EPS_SpeedValid 1 "ESP Speed Valid" 0 "ESP Speed NOT Valid" ;
+VAL_ 534 EPS_ControlledByLKA 1 "Controlled" 0 "Not Controlled" ;
+VAL_ 534 EPS_ControlledByLCA 1 "Controlled" 0 "Not Controlled" ;
+VAL_ 534 APA_AngleRequestValidity 1 "Valid" 0 "Not Valid" ;
+VAL_ 117 PowerTrainStatus 0 "Powertrain Stopped" 1 "Reserved" 2 "Powertrain Running" 3 "Powertrain Starting" ;
+VAL_ 1518 MultiDriveMode_EPS_v2 0 "Mode EPS 1" 1 "Mode EPS 2" 2 "Mode EPS 3" 3 "Mode EPS 4" 4 "Mode EPS 5" 5 "Mode EPS 6" 6 "Mode EPS 7" 7 "Mode EPS 8" 8 "Mode EPS 9" 9 "Mode EPS 10" 10 "Mode EPS 11" 11 "Mode EPS 12" 12 "Mode EPS 13" 13 "Mode EPS 14 " 14 "Mode EPS 15" 15 "Unavailable" ;
+VAL_ 1140 LDW_HapticalActionRequest 1 "Haptical Action Requested" 0 "Haptical Action NOT Requested" ;
+VAL_ 1402 LDW_RoadQualityEstimation 1 "Degraded detection" 0 "Normal detection" ;

@@ -1,0 +1,15 @@
+//yocto_pytech_gcc
+//notes
+desktop
+=========
+root@ti-ThinkCentre-M720q:~# 
+cd /opt/ampliphy/BSP-Yocto-Ampliphy-AM335x-PD23.1.0/
+source environment-setup-cortexa8t2hf-neon-phytec-linux-gnueabi
+$CC test.c -o test
+scp test 192.168.3.11:/root/
+  
+makefile run so that
+$CC tcpip_client.c main.c -o tcpip
+
+Target:
+run the exe

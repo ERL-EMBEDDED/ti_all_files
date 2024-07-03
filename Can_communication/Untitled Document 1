@@ -1,0 +1,58 @@
+ServerTcpip Class Overview
+
+The ServerTcpip class represents a TCP/IP server that listens for incoming client connections, sends and receives data, and manages client interactions. It utilizes socket programming to achieve network communication.
+Member Variables
+
+    serverSocket: Integer representing the server socket descriptor. Initialized to -1 in the constructor.
+    clientSocket: Integer representing the client socket descriptor (for the connected client).
+    serverAddr: sockaddr_in structure containing the server's address information (IP address and port).
+    clientAddr: sockaddr_in structure containing the client's address information upon connection.
+    clientAddrLen: Length of the clientAddr structure.
+    sendTcpipFrame: Character array used to construct TCP/IP frames (messages) for sending data to the client.
+    receiveTcpipFrame: Character array used to store received TCP/IP frames (messages) from the client.
+
+Constructor (ServerTcpip::ServerTcpip())
+
+    Initializes serverSocket to -1 to indicate an invalid socket descriptor.
+
+Destructor (ServerTcpip::~ServerTcpip())
+
+    Ensures that the server socket is closed (close(serverSocket)) if it was successfully created (serverSocket != -1).
+
+startServer() Method
+
+    Creates a TCP socket (serverSocket) using socket() with AF_INET (IPv4) and SOCK_STREAM (TCP) parameters.
+    Configures the server address (serverAddr) with the specified port (SERVER_PORT) and listens on any interface (INADDR_ANY).
+    Binds the socket to the server address using bind().
+    Starts listening for incoming connections (listen()) with a specified maximum number of connections (MAX_CONNECTIONS).
+
+acceptClient() Method
+
+    Accepts an incoming connection request from a client using accept().
+    Creates a new socket (clientSocket) for communication with the connected client.
+    Retrieves and stores the client's address information in the clientAddr structure.
+
+sendVehicleSpeed(float speed) Method
+
+    Constructs a TCP/IP frame (sendTcpipFrame) containing vehicle speed data (speed) and sends it to the connected client using send().
+
+receiveVehicleSpeed() Method
+
+    Receives a TCP/IP frame (encoded message) from the connected client using recv().
+    Decodes the received message to extract the expected vehicle speed data and displays it on the console.
+
+isClientConnected() Method
+
+    Checks if a client is currently connected by verifying the validity of the clientSocket (clientSocket != -1).
+
+disconnectClient() Method
+
+    Closes the client socket (clientSocket) if it is currently connected.
+
+stopServer() Method
+
+    Closes the server socket (serverSocket) to stop the server from accepting new connections.
+
+Summary
+
+The ServerTcpip class provides a structured implementation for a TCP/IP server, allowing developers to manage server initialization, client connections, data transmission, and server shutdown. Socket programming functions (socket(), bind(), listen(), accept(), send(), recv(), close()) are utilized to establish network communication and handle client-server interactions efficiently.

@@ -1,0 +1,3 @@
+message_id_hex = '0x28A'
+dbc_file_path = ''
+serial_port = '345'

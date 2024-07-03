@@ -1,0 +1,6 @@
+ // Perform conversion
+        float converted_data = ((float)data * 500) / 65536;
+
+        // Convert the calculated value to a string
+        char buffer[100];
+        sprintf(buffer, "%.2f", converted_data);

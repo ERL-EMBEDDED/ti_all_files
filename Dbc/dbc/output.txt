@@ -1,0 +1,36 @@
+Message Name: ADAS_A103:
+  ID (hex): 57a
+  Length: 8
+  Signals:
+Message Name: ADAS_A116:
+  ID (hex): 474
+  Length: 8
+  Signals:
+Message Name: CDM_A103:
+  ID (hex): 5ee
+  Length: 8
+  Signals:
+Message Name: EPS_A101:
+  ID (hex): 216
+  Length: 4
+  Signals:
+Message Name: STRG_A1:
+  ID (hex): a8
+  Length: 7
+  Signals:
+Message Name: VDC_A3:
+  ID (hex): 289
+  Length: 8
+  Signals:
+Message Name: VDC_A6:
+  ID (hex): ab
+  Length: 8
+  Signals:
+Message Name: ECM_A112:
+  ID (hex): 75
+  Length: 8
+  Signals:
+Message Name: VDC_A9:
+  ID (hex): 28a
+  Length: 8
+  Signals:

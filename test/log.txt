@@ -1,0 +1,14 @@
+[ERROR] Line 37: Division by zero
+[INFO] Line 48: Program finished successfully
+[ERROR] Line 37: Division by zero
+[INFO] Line 48: Program finished successfully
+[ERROR] Line 37: Division by zero
+[INFO] Line 48: Program finished successfully
+[ERROR] Line 37: Division by zero
+[INFO] Line 48: Program finished successfully
+[ERROR] Line 37: Division by zero
+[INFO] Line 48: Program finished successfully
+[ERROR] Line 37: Division by zero
+[INFO] Line 48: Program finished successfully
+[ERROR] Line 37: Division by zero
+[INFO] Line 48: Program finished successfully

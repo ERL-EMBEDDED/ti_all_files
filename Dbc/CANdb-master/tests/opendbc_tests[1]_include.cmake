@@ -1,0 +1,5 @@
+if(EXISTS "/home/ti/Dbc/CANdb-master/tests/opendbc_tests[1]_tests.cmake")
+  include("/home/ti/Dbc/CANdb-master/tests/opendbc_tests[1]_tests.cmake")
+else()
+  add_test(opendbc_tests_NOT_BUILT opendbc_tests_NOT_BUILT)
+endif()

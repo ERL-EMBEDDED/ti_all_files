@@ -1,0 +1,5 @@
+if(EXISTS "/home/ti/Dbc/CANdb-master/tests/dbcparser_single_tests[1]_tests.cmake")
+  include("/home/ti/Dbc/CANdb-master/tests/dbcparser_single_tests[1]_tests.cmake")
+else()
+  add_test(dbcparser_single_tests_NOT_BUILT dbcparser_single_tests_NOT_BUILT)
+endif()
